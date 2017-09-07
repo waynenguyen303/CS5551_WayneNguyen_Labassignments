@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ASE_lab2">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ASE_lab2</title>
+        <script src="lib/angular.min.js"></script>
+        <script src="js/app.js"></script>
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="mainstyle.css" >
+    </head>
+
+
+    <body>
+                    <!-- Page transition script -->
+        <script>
+            jQuery('body').css('display','none');
+            jQuery(document).ready(function() {
+                jQuery('body').fadeIn();
+                jQuery('a').on('click',function(event){
+                    var thetarget = this.getAttribute('target')
+                    if (thetarget != "_blank"){
+                        var thehref = this.getAttribute('href')
+                        event.preventDefault();
+                        jQuery('body').fadeOut(function(){
+                            //alert(thehref)
+                            window.location = thehref
+                        });
+                    }
+                });
+            });
+            setTimeout(function(){
+                jQuery('body').fadeIn();
+            },1000)
+        </script>
+
+
+        <header>
+            <div class="container">
+                <div class="logo">
+                    <img src="images.jpg" width="200" alt="" title="" >
+                </div>
+
+                 <nav >
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="login.html">Login</a></li>
+                        <li><a href="register.html">Register</a></li>
+                    </ul>
+                 </nav>
+            </div>
+         </header>
+
+
+        <div class="container">
+            <div class="content">
+                <h2>Welcome!</h2>
+                <article>
+                    fgjxfgjeag aj ajo;ar ergop pospopesg psg[0seo g[pspog //fg [gos
+                    ;dlkf jjgopjg 0[egrj pog p[esoig0[e'//k[ g0[rg
+                    kj gpoie [gse[r [seporg psg;/fs, ';rt9 s[rrth drthe tyhrthsrdthdrtyj rtyse
+                    ,kdg ;lo[oiaej .,s ;ljestyty rtyethdrthdrh dyjdtyjeytu sri[og srg
+                    kfg ;ogoie fgl. 'po ajr
+                    dfgj ;lfgposoper ga,.m e irhrthsr t hrth rjetyjetyjdtyjeytjketyj drtyw sy
+                    kldhfg uigoa,kfgnoeporeyr srhtthgsrtyhsrth whrth tjh
+                    dfgmn ligpe iod rhdrth drth5et6uy drytdtyh
+                    <br>
+                    <p></p>
+                    f dghdrg hdfh ggh
+                    ]fgj opig[osie gj[osegj]-p k jg;sidg p[eia[ ogsejrggs
+                    dsfg sfgser yserty sethyse tryeytstrhstr ysrt5ysrhtsr hrsthsrthwrds gfs
+                    dfg sdfgsfgs fgsfe gh shhsgjhsrtjsrtjryns5
+                </article>
+
+                <ul>
+                    <li>- dfgbs124312341235</li>
+                    <li>- dfgbs124312341235</li>
+                    <li>- dfgbs124312341235</li>
+                    <li>- dfgbs124312341235</li>
+                    <li>- dfgbs124312341235</li>
+                    <li>- dfgbs124312341235</li>
+                    <li>- dfgbs124312341235</li>
+                    <li>- dfgbs124312341235</li>
+                </ul>
+
+            </div>
+        </div>
+
+
+        <div class="container">
+            <div class="content">
+
+               <ul id="secondUl">
+                    <li><h3 id="audiotext">Audio and Gif Tags</h3></li>
+                    <li><audio controls><source src="Rollanddrop.mp3" type="audio/mp3"></audio></li><br><br>
+                    <li><meter value="3" min="0" max="10">3 out of 10</meter><p>Meter Bar</p><br></li>
+                    <li><img id="gif" src="200w_d.gif"  alt="html5_gif" title="" style="width:175px;height: 175px; ">
+                        <figcaption>Fig1. Likes to give free Bear hugs</figcaption></li>
+               </ul>
+
+                <h3>Video Tags </h3>
+                <video width="320" height="240" controls>
+                    <source src="marioMP4.mp4" type="video/mp4">
+                </video>
+                <br>
+
+                Downloading progress:
+                <progress value="50" max="100"></progress>
+                <br><br>
+
+                <select id="browsers">
+                    <option value="Internet Explorer">Internet Explorer</option>
+                    <option value="Firefox">Firefox</option>
+                    <option value="Chrome">Chrome</option>
+                    <option value="Opera">Opera</option>
+                    <option value="Safari">Baidu</option>
+                    <option value="Safari">Dark Web</option>
+                </select>
+            </div>
+        </div>
+
+
+        <footer>
+        <p>&copy;2017 Black Ultra Project. All rights reserved.</p>
+            <details>
+                <summary>Copyright 1980-2017.</summary>
+                <p> - by Wayne Nguyen. All Rights Reserved.</p>
+                <p>All content and graphics on this web site are the property of the company Black Ultra.</p>
+            </details>
+        </footer>
+
+    </body>
+
+
+
+
+
+</html>
