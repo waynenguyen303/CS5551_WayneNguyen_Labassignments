@@ -1,0 +1,32 @@
+
+    <body >
+
+    <form name="form" method="post" >
+        <div class="box">
+            <h1>Please Login</h1>
+
+            <input type="text" id="username2" name="username" ng-model="newUser.name"  placeholder="UserName" required><p></p>
+            <input type="password" id="password2" name="password" ng-model="newUser.password" placeholder="Password" required>
+
+            <button ng-disabled="form.$invalid" class="btn btn-primary" value="save" onclick="entry()">
+                Submit
+            </button>
+
+
+            <button class="loginBtn loginBtn--facebook">
+                Login with Facebook
+            </button>
+
+            <button class="loginBtn loginBtn--google">
+                Login with Google
+            </button>
+
+            <p></p>
+
+            <a href="#home"><div id="btn2">home</div></a>
+
+        </div>
+    </form>
+
+    </body>
+
