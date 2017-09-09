@@ -1,9 +1,17 @@
 
-    <body >
+
 
     <form name="form" method="post" >
         <div class="box">
             <h1>Please Login</h1>
+
+            <button class="loginBtn loginBtn--facebook" >
+                Login with Facebook
+            </button>
+
+            <button class="loginBtn loginBtn--google" ng-click="onGoogleLogin()">
+                Login with Google
+            </button>
 
             <input type="text" id="username2" name="username" ng-model="newUser.name"  placeholder="UserName" required><p></p>
             <input type="password" id="password2" name="password" ng-model="newUser.password" placeholder="Password" required>
@@ -12,14 +20,16 @@
                 Submit
             </button>
 
+            <input type="button" value="Login with Google" class="loginBtn loginBtn--google" ng-click="onGoogleLogin()">
 
-            <button class="loginBtn loginBtn--facebook">
-                Login with Facebook
-            </button>
 
-            <button class="loginBtn loginBtn--google">
-                Login with Google
-            </button>
+
+
+
+
+            <h4>{{gmail.username}}</h4>
+            <h4>{{gmail.email}}</h4>
+            <img ng-src ="{{g_image}}" style="width: 100px; height: 100px">
 
             <p></p>
 
@@ -28,5 +38,5 @@
         </div>
     </form>
 
-    </body>
+
 
