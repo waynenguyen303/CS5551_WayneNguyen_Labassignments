@@ -1,42 +1,40 @@
-<div class="row">
-    <section id="box">
-        <fieldset>
-            <form name="form" novalidate>
-                <legend>Create Account</legend>
 
-                <label>Name</label>
-                <input id="fullname1" type="text" ng-model="newUser.fullname" placeholder="Enter Your Full Name Here" required>
-                <hr>
 
-                <label>Email</label>
-                <input id="email1" type="email" ng-model="newUser.email" placeholder="Enter Your Email Here" required>
-                <hr>
+<form name="form" nonvalidate>
+    <div class="box">
 
-                <label>UserName</label>
-                <input type="text" id="username1" name="username" ng-model="newUser.name" placeholder="Enter New UserName Here" required>
-                <hr>
+                    <h2>Please Register</h2>
 
-                <label>Password</label>
-                <input
-                        id="password1"
-                        type="password"
-                        ng-model="newUser.password"
-                        name="password"
-                        placeholder="Enter New Password Here"
-                        required
-                        ng-minlength="6">
-                <p
-                        class="help-block"
-                        ng-show="form.password.$error.minlength || form.password.$invalid">
-                    Password must be at least 6 characters.
-                </p>
-                <p></p>
+                    <label>Name</label>
+                    <input id="fullname1" type="text" ng-model="newUser.fullname" placeholder="Enter Your Full Name Here" required>
+                    <hr>
 
-                <button ng-disabled="form.$invalid" class="btn btn-primary" value="save" onclick="store()">Submit</button>
+                    <label>Email</label>
+                    <input id="email1" type="email" ng-model="newUser.email" placeholder="Enter Your Email Here" required>
+                    <hr>
 
-            </form>
-        </fieldset>
-    </section>
-</div>
+                    <label>UserName</label>
+                    <input type="text" id="username1" name="username" ng-model="newUser.name" placeholder="Enter New UserName Here" required>
+                    <hr>
 
+                    <label>Password</label>
+                    <input
+                            id="password1"
+                            type="password"
+                            ng-model="newUser.password"
+                            name="password"
+                            placeholder="Enter New Password Here"
+                            required
+                            ng-minlength="6">
+                    <p
+                            class="help-block"
+                            ng-show="form.password.$error.minlength || form.password.$invalid">
+                        Password must be at least 6 characters.
+                    </p>
+                    <p></p>
+
+                    <button ng-disabled="form.$invalid" class="btn btn-primary" value="save" onclick="store()">Submit</button>
+
+    </div>
+</form>
 

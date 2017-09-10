@@ -25,7 +25,7 @@ h1{
 }
 
 .box{
-    background:white;
+    background:#ecf0f1;
     width:300px;
     border-radius:6px;
     margin: 0 auto 0 auto;
@@ -76,7 +76,7 @@ h1{
 }
 
 #btn2{
-    float:left;
+    float:right;
     background:#3498db;
     width:125px;  padding-top:5px;
     padding-bottom:5px;
@@ -212,9 +212,9 @@ html         { overflow-y:hidden; }
 
 /* PAGES
 ============================================================================= */
-.home 		{ background:#333; color:#f5eded; }
-.about 	{ background:#E59400; color:#a55400; }
-.login 	{ background:#1e42a5; color:#f5eded; }
+.home 		{ background:#f5eded; color:#000000; }
+.register 	{ background:#adadad; color:#000000; }
+.login 	{ background:#f5eded; color:#000000; }
 
 /* ANIMATIONS
 ============================================================================= */
@@ -239,19 +239,19 @@ html         { overflow-y:hidden; }
     animation:slideInUp 0.5s both ease-in;
 }
 
-/* about ------------------------ */
-.about.ng-leave        {
+/* register ------------------------ */
+.register.ng-leave        {
     -webkit-animation:slideOutLeft 0.5s both ease-in;
     -moz-animation:slideOutLeft 0.5s both ease-in;
     animation:slideOutLeft 0.5s both ease-in;
 }
-.about.ng-enter 		{
+.register.ng-enter 		{
     -webkit-animation:slideInRight 0.5s both ease-in;
     -moz-animation:slideInRight 0.5s both ease-in;
     animation:slideInRight 0.5s both ease-in;
 }
 
-/* contact ---------------------- */
+/* login ---------------------- */
 .login.ng-leave      {
     -webkit-transform-origin: 50% 50%;
     -webkit-animation: slideOutLeft .5s both ease-in;
