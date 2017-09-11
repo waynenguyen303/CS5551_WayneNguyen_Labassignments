@@ -1,16 +1,18 @@
+/*
+created by wayne nguyen 09/09/17
+ */
 
-//google login
 
-
+/*google login
+===============================================================*/
 function onLoadFunction() {
     gapi.client.setApiKey('AIzaSyATBETmTE2XR54hf6mMdzJ60U9_Himty_A');
     gapi.client.load('plus','v1', function () {});
-    
 }
 
-/*   facebook
-=================================================
- */
+/*   facebook login status
+==============================================================*/
+
 window.fbAsyncInit = function() {
     FB.init({
         appId            : '476369869409329',
@@ -28,9 +30,7 @@ window.fbAsyncInit = function() {
         }else{
             //not logged into fb
         }
-
     });
-
 };
 
 (function(d, s, id){
@@ -41,13 +41,9 @@ window.fbAsyncInit = function() {
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
-
-
-
-
 /* local storage
-=========================================================================
- */
+===============================================================*/
+
 function store() {
 
     var inputEmail = document.getElementById("email1");
@@ -60,6 +56,7 @@ function store() {
     localStorage.setItem("password",inputPW.value);
     localStorage.setItem("username",inputUsername.value);
     alert("Success!! You ar now registered. Please login.");
+    window.location.href = 'http://localhost:63342/AdvSoft_Lab3/#/login';
 }
 
 function entry() {
@@ -69,7 +66,8 @@ function entry() {
 
     if(localStorage.getItem("username") === user.value  && localStorage.getItem("password") === pass.value)
     {
-        window.location.href="home.html";
+        document.getElementById('status').innerHTML = localStorage.getItem('fullname');
+        window.location.href = 'http://localhost:63342/AdvSoft_Lab3/#/home';
     }
-    else{alert("Login not successful. Please try again.");}
+    else{alert("Login not successful. Please register and try again.");}
 }

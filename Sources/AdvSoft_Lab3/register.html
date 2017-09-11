@@ -1,39 +1,38 @@
-
-
 <form name="form" nonvalidate>
     <div class="box">
 
-                    <h2>Please Register</h2>
+        <h2>Please Register</h2>
+        <hr>
 
-                    <label>Name</label>
-                    <input id="fullname1" type="text" ng-model="newUser.fullname" placeholder="Enter Your Full Name Here" required>
-                    <hr>
+        <label class="left">Name:</label>
+        <input align="right" id="fullname1" type="text" ng-model="newUser.fullname" placeholder="Enter Full Name" required><br><p></p>
 
-                    <label>Email</label>
-                    <input id="email1" type="email" ng-model="newUser.email" placeholder="Enter Your Email Here" required>
-                    <hr>
 
-                    <label>UserName</label>
-                    <input type="text" id="username1" name="username" ng-model="newUser.name" placeholder="Enter New UserName Here" required>
-                    <hr>
+        <label class="left">Email:</label>
+        <input align="right" id="email1" type="email" ng-model="newUser.email" placeholder="Enter Email" required><br><p></p>
 
-                    <label>Password</label>
-                    <input
-                            id="password1"
-                            type="password"
-                            ng-model="newUser.password"
-                            name="password"
-                            placeholder="Enter New Password Here"
-                            required
-                            ng-minlength="6">
-                    <p
-                            class="help-block"
-                            ng-show="form.password.$error.minlength || form.password.$invalid">
-                        Password must be at least 6 characters.
-                    </p>
-                    <p></p>
 
-                    <button ng-disabled="form.$invalid" class="btn btn-primary" value="save" onclick="store()">Submit</button>
+        <label class="left">UserName:</label>
+        <input type="text" id="username1" name="username" ng-model="newUser.name" placeholder="Enter New UserName" required><br><p></p>
+
+
+        <label class="left">Password:</label>
+        <input
+                id="password1"
+                type="password"
+                ng-model="newUser.password"
+                name="password"
+                placeholder="Enter New Password"
+                required
+                ng-minlength="6">
+        <p
+                class="help-block"
+                ng-show="form.password.$error.minlength || form.password.$invalid">
+            Password must be at least 6 characters.
+        </p>
+        <p></p>
+
+        <button ng-disabled="form.$invalid" class="btn btn-primary" value="save" onclick="store()">Submit</button>
 
     </div>
 </form>

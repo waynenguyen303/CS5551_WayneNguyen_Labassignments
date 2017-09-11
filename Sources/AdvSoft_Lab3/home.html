@@ -1,14 +1,33 @@
+<div class="container">
+    <h1 style="color: white">ASE_LAB3 Keyword Search Mash-up</h1><br>
 
-
-        <div class="box">
-        <h1>Angular Page Transitions</h1>
-        <h2>Home</h2>
-        <p> Welcome to the home page</p>
-        <a href="#" class="btn btn-success btn-lg">login</a>
-
-
-            <h4>{{gmail.username}}</h4>
-            <h4>{{gmail.email}}</h4>
-            <img ng-src ="{{g_image}}" style="width: 100px; height: 100px">
+    <form>
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Enter keyword(s) for trending Youtube video / language translation " name="search">
+            <div class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </div>
         </div>
+    </form>
 
+    <div id="left_container">
+        <hr><p></p>
+        <h3 style="color: white">Keyword Trending Videos</h3>
+
+        <iframe width="450" height="400" src="https://www.youtube.com/embed/XYlVU45WlnA" frameborder="0" allowfullscreen></iframe>
+        
+    </div>
+
+    <div id="right_container">
+        <hr>
+        <h3 style="color: white">Keyword Translator</h3>
+
+
+    </div>
+
+
+
+</div>
+<footer><p>Click here to return to <a href="#"><h5>Login</h5></a></p></footer>

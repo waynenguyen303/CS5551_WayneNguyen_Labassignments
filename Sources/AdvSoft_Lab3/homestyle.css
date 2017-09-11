@@ -1,0 +1,18 @@
+#left_container{
+    overflow-y:auto;
+    float: left;
+    width: 475px;
+    height: 600px;
+    background-color: transparent;
+    border: #f13f3f;
+
+
+}
+
+#right_container{
+    overflow-y:auto;
+    float: right;
+    width: 450px;
+    height: 600px;
+    background-color: transparent;
+}
