@@ -1,10 +1,13 @@
 <!--Header bar!-->
+<div>
 <nav class="navbar navbar-default navbar-inverse navbar-fixed-top" >
     <div class="container" >
         <div class="navbar-header" >
             <a id= "status" style="color: white" class="navbar-brand" ></a>
+            <div class="navbar-brand">{{lc.facebook_name}}</div>
             <a id ="profileImage" class="navbar-brand"></a>
-        </div>
+            <img ng-src="{lc.facebook_image}"/>
+>        </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li  class="background-header"><a style="color: white" href="#">LogOut</a></li>
@@ -17,3 +20,4 @@
         </div><!--/.nav-collapse -->
     </div>
 </nav>
+</div>

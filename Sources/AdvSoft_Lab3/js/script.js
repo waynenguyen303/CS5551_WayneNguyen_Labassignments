@@ -35,13 +35,25 @@ myApp.config(function($routeProvider) {
             redirectTo: '/login'
         });
 });
-
+/*
+(function () {
+    angular
+        .module(myApp)
+        .controller()
+})();*/
 myApp.controller('loginController', ['$rootScope', '$scope','$window',function($rootScope, $scope, $window) {
     $scope.pageClass = 'login';
     $scope.gmail ={
         username:"",
         email:""
     };
+
+    function broadcastlogin(parm) {
+        $rootScope.$broadcast('login-event2',parm);
+
+    }
+    broadcastlogin('hi hel');
+
     $scope.onGoogleLogin = function () {
         var params = {
             'clientid': '155306587727-mfg5s20o2279i4sn1q92p3eccgrl9rqm.apps.googleusercontent.com',
@@ -80,21 +92,27 @@ myApp.controller('loginController', ['$rootScope', '$scope','$window',function($
         username:"",
         email:""
     };
+
+    lc.facebook_image = null;
+    lc.facebook_name = '';
+    lc.facebook_email = '';
+
     $scope.onFBLogin = function () {
+        broadcastlogin('logged in to facebook');
         FB.login(function (response) {
             if(response.authResponse){
 
                 FB.api('/me','GET',{fields:'email, first_name, name, id, picture.width(45).height(30)'}, function (response){
+
+                    $rootScope.$broadcast('login-event2', {name: response.name, email: response.email, pic: response.picture.data.url});
                     $scope.$apply(function () {
-                        $scope.facebook.username = response.name;
-                        document.getElementById('status').innerHTML = response.name;
+                        lc.facebook_name = response.name;
+
                         localStorage.setItem('facebook_username',response.name);
-                        $scope.facebook.email = response.email;
+                        lc.facebook_email = response.email;
                         localStorage.setItem('facebook_email',response.email);
-                        $scope.facebook_image = response.picture.data.url;
-                        document.getElementById('profileImage').innerHTML = "<img src='"+response.picture.data.url +"'>'";
+                        lc.facebook_image = response.picture.data.url;
                         localStorage.setItem('facebook_image',response.picture.data.url);
-                        $rootScope.$broadcast('login-event2', response);
 
                         $window.location.href = 'http://localhost:63342/AdvSoft_Lab3/#/home';
                     });
@@ -110,16 +128,27 @@ myApp.controller('loginController', ['$rootScope', '$scope','$window',function($
 }]);
 
 myApp.controller('homeController', ['$rootScope','$scope', function($rootScope, $scope) {
-
+    $rootScope.$on('login-event2','lol');
     $scope.pageClass = 'home';
 }]);
 
 myApp.controller('registerController', ['$scope', function($scope) {
 
     $scope.pageClass = 'register';
+
 }]);
 
 myApp.controller('navbarController', ['$rootScope','$scope', function($rootScope, $scope) {
 
+    lc.facebook_image = null;
+    lc.facebook_name = '';
+    lc.facebook_email = '';
+
+    $rootScope.$on('login-event2',function(event) {
+        console.log(event);
+        lc.facebook_email  = event.email;
+        lc.facebook_image = event.pic;
+        lc.facebook_name = event.name;
+    });
     $scope.pageClass = 'navbar';
 }]);
