@@ -2,16 +2,18 @@
     <form name="form" nonvalidate>
         <div class="box">
             <div class="row">
-                <h2>Please Register</h2>
-                <hr>
+                <h2 style="color: white">Please Register</h2><hr>
             </div>
             <div class="row">
                 <label class="left">Name:</label>
                 <input class="right" style="b: #66afe9" id="fullname1" type="text" ng-model="newUser.fullname" placeholder=" Enter Full Name" required><br><p></p>
+
                 <label class="left">Email:</label>
                 <input  class="right" id="email1" type="email" ng-model="newUser.email" placeholder=" Enter Email" required><br><p></p>
+
                 <label class="left">UserName:</label>
                 <input class="right" type="text" id="username1" name="username" ng-model="newUser.name" placeholder=" Enter New UserName" required><br><p></p>
+
                 <label class="left">Password:</label>
                 <input
                         class="right"
@@ -23,7 +25,9 @@
                         required
                         ng-minlength="8">
             </div>
-            <div><br><p>Password must be at least 8 characters.</p></div>
+            <div>
+                <br><p>Password must be at least 8 characters.</p>
+            </div>
             <div>
                 <p></p><button ng-disabled="form.$invalid" class="btn btn-primary" value="save" onclick="store()">Submit</button>
             </div>

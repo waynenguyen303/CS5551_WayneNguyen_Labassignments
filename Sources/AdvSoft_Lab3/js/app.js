@@ -66,6 +66,7 @@ function entry() {
     if(localStorage.getItem("username") === user.value  && localStorage.getItem("password") === pass.value)
     {
         document.getElementById('status').innerHTML = localStorage.getItem('fullname');
+        document.getElementById('profileImage').innerHTML = '';
         window.location.href = 'http://localhost:63342/AdvSoft_Lab3/#/home';
     }
     else{
@@ -79,5 +80,8 @@ function changeLanguage(text) {
     localStorage.setItem('lang',text);
 }
 
-
+function logout() {
+    document.getElementById('profileImage').innerHTML = '';
+    document.getElementById('status').innerHTML = '';
+}
 

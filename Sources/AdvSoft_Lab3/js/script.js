@@ -64,7 +64,6 @@ myApp.controller('loginController', ['$rootScope', '$scope','$window',function($
                            $scope.g_image = resp.image.url;
                            document.getElementById('profileImage').innerHTML = "<img src='"+resp.image.url+"'width='45px' height='30px'>'";
                            localStorage.setItem('gmail_image',resp.image.url);
-                           $rootScope.$broadcast('login-event', resp);
                            $window.location.href = 'http://localhost:63342/AdvSoft_Lab3/#/home';
                        });
                     });
@@ -92,7 +91,6 @@ myApp.controller('loginController', ['$rootScope', '$scope','$window',function($
                         $scope.facebook_image = response.picture.data.url;
                         document.getElementById('profileImage').innerHTML = "<img src='"+response.picture.data.url +"'>'";
                         localStorage.setItem('facebook_image',response.picture.data.url);
-                        $rootScope.$broadcast('login-event2', response);
                         $window.location.href = 'http://localhost:63342/AdvSoft_Lab3/#/home';
                     });
                 });
@@ -135,7 +133,6 @@ myApp.controller('homeController', ['$rootScope','$scope', '$http','$filter', fu
             });
 
             angular.forEach(data.items, function (titledata) {
-
                 $scope.transText(titledata.snippet.title,$scope.nowLanguage).then(function (response) {
                     titledata.snippet.title = response.data.text[0];
                 });
@@ -145,6 +142,7 @@ myApp.controller('homeController', ['$rootScope','$scope', '$http','$filter', fu
             });
         });
     };
+
     $scope.checkDataLength = function(data){
         return (data.length >=1);
     };
@@ -160,15 +158,16 @@ myApp.controller('homeController', ['$rootScope','$scope', '$http','$filter', fu
             return error.statusText;
         });
     };
+}]);
 
+
+
+myApp.controller('navbarController', ['$rootScope','$scope', function($rootScope, $scope) {
+
+    $scope.pageClass = 'navbar';
 }]);
 
 myApp.controller('registerController', ['$scope', function($scope) {
 
     $scope.pageClass = 'register';
-}]);
-
-myApp.controller('navbarController', ['$rootScope','$scope', function($rootScope, $scope) {
-
-    $scope.pageClass = 'navbar';
 }]);

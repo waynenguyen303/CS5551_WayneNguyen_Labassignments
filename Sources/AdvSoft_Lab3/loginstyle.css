@@ -165,7 +165,7 @@ html         { overflow-y:auto; }
 ============================================================================= */
 .home 		{ padding-top: 100px; color:#000000; }
 .register 	{ padding-top: 100px; color:#000000; }
-.login 	{ padding-top: 200px; color:#000000;}
+.login 	{ padding-top: 100px; color:#000000;}
 
 /* ANIMATIONS
 ============================================================================= */
