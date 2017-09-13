@@ -2,6 +2,7 @@ var myApp = angular.module('myApp', ['ngRoute', 'ngAnimate']);
 
 $(document).ready(function(){
     $("#navbar-frame").load("navbar.html");
+    localStorage.setItem('lang','en');
 });
 
 $(window).scroll(function () {
@@ -35,25 +36,13 @@ myApp.config(function($routeProvider) {
             redirectTo: '/login'
         });
 });
-/*
-(function () {
-    angular
-        .module(myApp)
-        .controller()
-})();*/
+
 myApp.controller('loginController', ['$rootScope', '$scope','$window',function($rootScope, $scope, $window) {
     $scope.pageClass = 'login';
     $scope.gmail ={
         username:"",
         email:""
     };
-
-    function broadcastlogin(parm) {
-        $rootScope.$broadcast('login-event2',parm);
-
-    }
-    broadcastlogin('hi hel');
-
     $scope.onGoogleLogin = function () {
         var params = {
             'clientid': '155306587727-mfg5s20o2279i4sn1q92p3eccgrl9rqm.apps.googleusercontent.com',
@@ -76,9 +65,7 @@ myApp.controller('loginController', ['$rootScope', '$scope','$window',function($
                            document.getElementById('profileImage').innerHTML = "<img src='"+resp.image.url+"'width='45px' height='30px'>'";
                            localStorage.setItem('gmail_image',resp.image.url);
                            $rootScope.$broadcast('login-event', resp);
-
                            $window.location.href = 'http://localhost:63342/AdvSoft_Lab3/#/home';
-
                        });
                     });
                 }
@@ -92,63 +79,96 @@ myApp.controller('loginController', ['$rootScope', '$scope','$window',function($
         username:"",
         email:""
     };
-
-    lc.facebook_image = null;
-    lc.facebook_name = '';
-    lc.facebook_email = '';
-
     $scope.onFBLogin = function () {
-        broadcastlogin('logged in to facebook');
         FB.login(function (response) {
             if(response.authResponse){
-
                 FB.api('/me','GET',{fields:'email, first_name, name, id, picture.width(45).height(30)'}, function (response){
-
-                    $rootScope.$broadcast('login-event2', {name: response.name, email: response.email, pic: response.picture.data.url});
                     $scope.$apply(function () {
-                        lc.facebook_name = response.name;
-
+                        $scope.facebook.username = response.name;
+                        document.getElementById('status').innerHTML = response.name;
                         localStorage.setItem('facebook_username',response.name);
-                        lc.facebook_email = response.email;
+                        $scope.facebook.email = response.email;
                         localStorage.setItem('facebook_email',response.email);
-                        lc.facebook_image = response.picture.data.url;
+                        $scope.facebook_image = response.picture.data.url;
+                        document.getElementById('profileImage').innerHTML = "<img src='"+response.picture.data.url +"'>'";
                         localStorage.setItem('facebook_image',response.picture.data.url);
-
+                        $rootScope.$broadcast('login-event2', response);
                         $window.location.href = 'http://localhost:63342/AdvSoft_Lab3/#/home';
                     });
                 });
-            }else{
-                //show message error
+            }else{//show message error
             }
-        },  {
+        },{
             $scope:'email, id, user_likes',
             return_scopes: true
         });
     }
 }]);
 
-myApp.controller('homeController', ['$rootScope','$scope', function($rootScope, $scope) {
-    $rootScope.$on('login-event2','lol');
+myApp.controller('homeController', ['$rootScope','$scope', '$http','$filter', function($rootScope, $scope, $http, $filter) {
+
     $scope.pageClass = 'home';
+    $scope.youtubeData = [];
+    $scope.youtubeSearchText = "";
+    $scope.translatedText = "";
+    $scope.nowLanguage = 'en';
+    $scope.getYoutubeData = function(searchText){
+        $http.get('https://www.googleapis.com/youtube/v3/search', {
+            params: {
+                key: "AIzaSyATBETmTE2XR54hf6mMdzJ60U9_Himty_A",
+                type: 'video',
+                maxResults: '10',
+                part: 'id,snippet',
+                fields: 'items/id,items/snippet/title,items/snippet/description,items/snippet/thumbnails/default,items/snippet/channelTitle,nextPageToken,prevPageToken',
+                q: searchText
+            }
+        }).success( function (data) {
+            if (data.items.length === 0) {
+                $scope.youtubeData = 'No results were found!';
+            }
+            $scope.youtubeSearchText = searchText;
+            $scope.youtubeData = data.items;
+            $scope.nowLanguage = localStorage.getItem('lang');
+
+            $scope.transText(searchText,$scope.nowLanguage).then(function (response) {
+                $scope.translatedText = response.data.text[0];
+            });
+
+            angular.forEach(data.items, function (titledata) {
+
+                $scope.transText(titledata.snippet.title,$scope.nowLanguage).then(function (response) {
+                    titledata.snippet.title = response.data.text[0];
+                });
+                $scope.transText(titledata.snippet.description,$scope.nowLanguage).then(function (response) {
+                    titledata.snippet.description = response.data.text[0];
+                });
+            });
+        });
+    };
+    $scope.checkDataLength = function(data){
+        return (data.length >=1);
+    };
+
+    $scope.transText = function (searchText, language) {
+        return $http({
+            method: 'GET',
+            url: 'https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20170913T034651Z.489eb6aa12589e99.525b452bb54efb9faac7e0307e28d7d024576cf1&text=' + searchText + '&lang=' + language
+        }).then(function(response) {
+            return response;
+        }, function(error){
+            console.log(error);
+            return error.statusText;
+        });
+    };
+
 }]);
 
 myApp.controller('registerController', ['$scope', function($scope) {
 
     $scope.pageClass = 'register';
-
 }]);
 
 myApp.controller('navbarController', ['$rootScope','$scope', function($rootScope, $scope) {
 
-    lc.facebook_image = null;
-    lc.facebook_name = '';
-    lc.facebook_email = '';
-
-    $rootScope.$on('login-event2',function(event) {
-        console.log(event);
-        lc.facebook_email  = event.email;
-        lc.facebook_image = event.pic;
-        lc.facebook_name = event.name;
-    });
     $scope.pageClass = 'navbar';
 }]);

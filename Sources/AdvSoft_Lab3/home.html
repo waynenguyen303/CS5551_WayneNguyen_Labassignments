@@ -1,33 +1,46 @@
 <div class="container">
-    <h1 style="color: white">ASE_LAB3 Keyword Search Mash-up</h1><br>
-
-    <form>
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Enter keyword(s) for trending Youtube video / language translation " name="search">
-            <div class="input-group-btn">
-                <button class="btn btn-default" type="submit">
-                    <i class="glyphicon glyphicon-search"></i>
-                </button>
+    <div>
+        <h1 style="color: white">ASE_LAB3 Keyword Search Mash-up</h1><br>
+    </div>
+    <div>
+        <form class="form">
+            <input type="search" ng-model="youtubeSearchText" ng-change="getYoutubeData(youtubeSearchText)" name="hyv-search" id="hyv-search" class="form-control" placeholder="Enter keyword(s) for trending Youtube video">
+        </form>
+    </div>
+    <div >
+        <hr><p></p>
+        <div class="left">
+            <select ng-change="getYoutubeData(youtubeSearchText)" ng-model="nowLanguage" class="dropbtn" onchange="changeLanguage(value)">
+                <option value="en">English</option>
+                <option value="fr">French</option>
+                <option value="ja">Japanese</option>
+                <option value="vi">Vietnamese</option>
+                <option value="ar">Arabic</option>
+            </select>
+        </div>
+        <div style="padding-top: 1px;">
+            <h2>Translated Keyword(s): {{translatedText}}</h2><hr>
+        </div>
+        <div class="container">
+            <div><h2 style="color: white">Trending Videos</h2></div>
+            <div ng-if="checkDataLength(youtubeData)">
+                <div class="panel-body">
+                    <div class="col-lg-12" ng-repeat="data in youtubeData">
+                        <div class="well well-sm media" style="background-color: aliceblue; height: 125px">
+                            <a class="thumbnail pull-left" target="_block" href="https://www.youtube.com/watch?v={{data.id.videoId}}">
+                                <img alt="{{data.snippet.title}}" src="{{data.snippet.thumbnails.default.url}}" width="120" height="90">
+                            </a>
+                            <div class="media-body">
+                                <a target="_block" href="https://www.youtube.com/watch?v={{data.id.videoId}}">{{data.snippet.title}}</a>
+                                <div style="font-size: small">{{data.snippet.description}}</div>
+                                <p style="color: #0f0f0f">By <a target="_block" href="https://www.youtube.com/channel/{{data.snippet.channelId}}"><span class="label label-info">{{data.snippet.channelTitle}}</span></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </form>
-
-    <div id="left_container">
-        <hr><p></p>
-        <h3 style="color: white">Keyword Trending Videos</h3>
-
-        <iframe width="450" height="400" src="https://www.youtube.com/embed/XYlVU45WlnA" frameborder="0" allowfullscreen></iframe>
-        
     </div>
-
-    <div id="right_container">
-        <hr>
-        <h3 style="color: white">Keyword Translator</h3>
-
-
-    </div>
-
-
-
 </div>
-<footer><p>Click here to return to <a href="#"><h5>Login</h5></a></p></footer>
+<footer><p></p><p></p><p>Click here to return to <a style="color: lightgreen " href="#"><h5>Login</h5></a></p></footer>
+<footer><p class="left">Created by Wayne Nguyen.  All rights reserved @2017</p> </footer>

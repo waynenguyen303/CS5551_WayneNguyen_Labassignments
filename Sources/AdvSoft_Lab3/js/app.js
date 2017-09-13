@@ -2,7 +2,6 @@
 created by wayne nguyen 09/09/17
  */
 
-
 /*google login
 ===============================================================*/
 function onLoadFunction() {
@@ -69,5 +68,16 @@ function entry() {
         document.getElementById('status').innerHTML = localStorage.getItem('fullname');
         window.location.href = 'http://localhost:63342/AdvSoft_Lab3/#/home';
     }
-    else{alert("Login not successful. Please register and try again.");}
+    else{
+        alert("Login not successful. Please register or try again.");
+    }
 }
+
+/*    change language
+ ========================================== */
+function changeLanguage(text) {
+    localStorage.setItem('lang',text);
+}
+
+
+
