@@ -5,11 +5,13 @@
 </ion-header>
 
 <ion-content padding>
-  <div class="bg-image">
+
   <h2>PixaBay and Google Knowledge Search MashUp</h2>
   <input type="text" style="min-width: 350px;min-height: 30px" [(ngModel)]="query" placeholder="Enter Here For Search">
   <button class="myButton" (click)="gsearch()" >Submit</button>
-  <div ion-item *ngFor="let res of result">
+  <div class="row">
+  <ion-col col-6>
+  <div  ion-item *ngFor="let res of result">
 
     <button class="myButton2" (click)="Pixsearch(res.result.name)">
       <div >{{res.result.name}}
@@ -17,12 +19,16 @@
       </div>
 
     </button>
+  </div>
+  </ion-col>
 
-    <div ion-item *ngFor="let subres of subresult">
-      <div>
-        {{subres.subresult.views}}
+
+  <ion-col col-6>
+    <div  *ngFor="let subres of subresult, let i=index" >
+      <div *ngIf="i<5">
+        <img [src]="subres.previewURL">
       </div>
     </div>
-  </div>
+  </ion-col>
   </div>
 </ion-content>
