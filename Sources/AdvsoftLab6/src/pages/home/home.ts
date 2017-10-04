@@ -9,19 +9,18 @@ import {HttpClient} from "@angular/common/http";
   templateUrl: 'home.html'
 })
 export class HomePage {
-  private query: string="blah";
+  private query: string="";
   private googleAPIkey: string="&key=AIzaSyAIJC4iA7279Vyq2gLVfzzDmZUooqShUhI";
   private URL: string="https://kgsearch.googleapis.com/v1/entities:search?query=";
   private result:any;
   private subresult: any;
-  private AWSKey: string="AKIAIMW4HKVNZ7252WLA";
-  private AWSID: string="4588-7443-9718";
-  private AWS_URL: string="https://webservices.amazon.com/onca/xml?Service=AWSECommerceService&AWSAccessKeyId=AKIAIMW4HKVNZ7252WLA&AssociateTag=4588-7443-9718&Operation=ItemSearch&SearchIndex=Books&Keywords=";
+  private PixabayKey: string="6627635-091e9de4bc6b9740a958fffa2";
+  private Pixabay_URL: string="https://pixabay.com/api/?key=";
 
 
 
   gsearch(){
-    this.http.get(this.URL+this.query+this.googleAPIkey).subscribe(data=>{
+    this.http.get(this.URL+this.query+this.googleAPIkey+"&limit=5").subscribe(data=>{
       console.log(data);
       this.result =data;
       this.result = this.result.itemListElement;
@@ -29,11 +28,12 @@ export class HomePage {
 
   }
 
-  amzsearch(clicked){
+  Pixsearch(clicked){
       console.log("hello");
-    this.http.get(this.AWS_URL+clicked).subscribe(data=>{
+    this.http.get(this.Pixabay_URL+this.PixabayKey+"&q="+encodeURIComponent(clicked)).subscribe(data=>{
       console.log(data);
       this.subresult= data;
+      this.subresult = this.subresult.hits;
     })
   }
 

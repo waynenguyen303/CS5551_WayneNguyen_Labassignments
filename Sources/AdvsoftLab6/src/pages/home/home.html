@@ -4,15 +4,25 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding >
-  <h2>Welcome to ASE Lab6!</h2>
-  <input [(ngModel)]="query">
-  <button (click)="gsearch()" >Submit</button>
-  <div ion-item="" *ngFor="let res of result">
+<ion-content padding>
+  <div class="bg-image">
+  <h2>PixaBay and Google Knowledge Search MashUp</h2>
+  <input type="text" style="min-width: 350px;min-height: 30px" [(ngModel)]="query" placeholder="Enter Here For Search">
+  <button class="myButton" (click)="gsearch()" >Submit</button>
+  <div ion-item *ngFor="let res of result">
 
-    <button (click)="amzsearch(res.result.name)">{{res.result.name}} {{res.result.description}}</button>
-    <div>{{subresult}}</div>
+    <button class="myButton2" (click)="Pixsearch(res.result.name)">
+      <div >{{res.result.name}}
+        <div>Description: {{res.result.description}}</div>
+      </div>
 
+    </button>
+
+    <div ion-item *ngFor="let subres of subresult">
+      <div>
+        {{subres.subresult.views}}
+      </div>
+    </div>
   </div>
-
+  </div>
 </ion-content>
