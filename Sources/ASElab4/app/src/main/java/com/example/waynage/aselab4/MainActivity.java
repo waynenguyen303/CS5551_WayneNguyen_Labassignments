@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
             try{
                 Intent sendhomepage = new Intent(MainActivity.this,homepage.class);
-                String name, email, dpUrl=" ";
+                String name , email, dpUrl=" ";
                 name = account.getDisplayName();
                 email= account.getEmail();
                 //dpUrl = account.getPhotoUrl().toString();
