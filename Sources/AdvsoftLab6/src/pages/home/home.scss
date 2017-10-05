@@ -46,14 +46,6 @@ page-home {
 
   }
 
-  .bg-image{
-    background-image: url(src/assets/img/bkg.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-  }
-
-
   .myButton2 {
     -moz-box-shadow:inset 3px 4px 0px 0px #899599;
     -webkit-box-shadow:inset 3px 4px 0px 0px #899599;
@@ -65,7 +57,7 @@ page-home {
     background:-ms-linear-gradient(top, #ededed 5%, #bab1ba 100%);
     background:linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
     filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#bab1ba',GradientType=0);
-    background-color:#ededed;
+    background-color:transparent;
     -moz-border-radius:22px;
     -webkit-border-radius:22px;
     border-radius:22px;
@@ -74,7 +66,7 @@ page-home {
     color:#3a8a9e;
     font-family:Arial;
     font-size:17px;
-    padding:12px 76px;
+    padding:12px 65px;
     text-decoration:none;
   }
   .myButton2:hover {
