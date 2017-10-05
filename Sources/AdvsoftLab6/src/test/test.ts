@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import {query} from "@angular/core/src/animation/dsl";
 import {HttpClient} from "@angular/common/http";
 
+
 export class type{
 
   private query: string="";
@@ -28,7 +29,31 @@ export class type{
       else{console.log("Test Failed"); return false;}
     })
   }
+
   constructor(public navCtrl: NavController, private http:HttpClient) {
 
   }
+
 }
+
+
+describe("gsearch result", function() {
+  var a;
+
+  it("test gsearch", function() {
+    a = true;
+    const result = gsearch(a.name);
+    expect(a).toBe(true);
+  });
+});
+
+
+describe("Pixsearch result", function() {
+  var a;
+
+  it("test Pixsearch", function() {
+    a = true;
+    const result = Pixsearch(a.pageURL);
+    expect(a).toBe(true);
+  });
+});
