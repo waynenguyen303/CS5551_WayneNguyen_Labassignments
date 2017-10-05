@@ -28,7 +28,6 @@ export class type{
       else{console.log("Test Failed"); return false;}
     })
   }
-  
   constructor(public navCtrl: NavController, private http:HttpClient) {
 
   }
