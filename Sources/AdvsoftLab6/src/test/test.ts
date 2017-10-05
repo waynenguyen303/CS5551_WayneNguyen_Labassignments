@@ -37,23 +37,4 @@ export class type{
 }
 
 
-describe("gsearch result", function() {
-  var a;
 
-  it("test gsearch", function() {
-    a = true;
-    const result = gsearch(a.name);
-    expect(a).toBe(true);
-  });
-});
-
-
-describe("Pixsearch result", function() {
-  var a;
-
-  it("test Pixsearch", function() {
-    a = true;
-    const result = Pixsearch(a.pageURL);
-    expect(a).toBe(true);
-  });
-});
