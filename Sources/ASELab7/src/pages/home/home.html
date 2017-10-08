@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>ASE LAB6</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg-image">
+
+  <h2>PixaBay and Google Knowledge Search MashUp</h2>
+  <input type="text" style="min-width: 350px;min-height: 30px" [(ngModel)]="query" placeholder="Enter Here For Search">
+  <button class="myButton" (click)="gsearch()" >Submit</button>
+
+  <hr>
+
+  <div class="row">
+  <ion-col width-40>
+    <h3>Google Search Results</h3>
+  <div  ion-item *ngFor="let res of result" style="background-color: transparent">
+
+    <button class="myButton2" (click)="Pixsearch(res.result.name)" >
+      <div >{{res.result.name}}
+        <div>Description: {{res.result.description}}</div>
+      </div>
+
+    </button>
+  </div>
+  </ion-col>
+
+  <ion-col width-30>
+    <h3>PixaBay Image Results</h3>
+    <div  *ngFor="let subres of subresult, let i=index" >
+      <div *ngIf="i<5">
+        <img [src]="subres.previewURL">
+      </div>
+    </div>
+  </ion-col>
+  </div>
+
+</ion-content>
