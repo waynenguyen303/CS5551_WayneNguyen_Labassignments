@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>ASE LAB7</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="bg-image">
+
+  <div style="overflow:auto;height:auto;width: auto">
+    <h2>PixaBay and Google Knowledge Search MashUp</h2>
+    <input type="text" style="min-width: 350px;min-height: 30px" [(ngModel)]="query" placeholder="Enter Here For Search">
+    <button class="myButton" (click)="gsearch()" >Submit</button>
+    <button class="myButton" (click)="showPhotoPage()">Go to Photo Album</button>
+    <hr>
+
+    <div  style="height: 390px" class="row" id="middle">
+      <ion-col  col-8="" style="overflow: auto;height:100%;width:100%;">
+        <div><h3>Google Search Results</h3></div>
+      <div  ion-item *ngFor="let res of result" style="background-color: transparent">
+
+        <button class="myButton2" (click)="Pixsearch(res.result.name)" >
+          <div >{{res.result.name}}
+            <div>Description: {{res.result.description}}</div>
+          </div>
+
+        </button>
+      </div>
+
+      </ion-col>
+      <ion-col style="overflow: auto;height:100%;width:100%;" >
+        <div>
+          <h5>PixaBay Results</h5>
+        </div>
+        <div  *ngFor="let subres of subresult, let i=index" >
+          <button ion-button="full" *ngIf="i<10" (click)="Photoadd(subres.previewURL)" >
+            <img [src]="subres.previewURL">
+          </button>
+        </div>
+      </ion-col>
+    </div>
+
+  </div>
+
+
+</ion-content>
