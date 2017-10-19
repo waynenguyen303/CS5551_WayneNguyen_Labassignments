@@ -3,11 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>ASELab8</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
     <script src="app.js"></script>
-</head>
-<body>
 
+    <style>
+        body {background-image: url("hex.jpg");}
+
+    </style>
+
+</head>
+
+<body ng-app="lab9app">
+
+<h1 style="text-align: center">Google and Yandex translated Knowledge Search Mashup</h1>
+<div style="padding-left: 20%" class="box">
+<div ng-controller="lab9controller" class="body1">
+    <input type="text" ng-model="gkeyword" placeholder="Enter Knowledge Search Phrase" style="width:425px;font-size:14pt;">
+    <input type="button" ng-click="gone()" class="button" value="Submit Search" style="width: 150px;font-size: 12pt;background-color: chartreuse">
+    <p align="right" style="padding-right: 30%">Please select a language first</p>
+    <div align="right" style="padding-right: 30%">
+        <select ng-model ="lang">
+            <option value="en">English</option>
+            <option value="fr">French</option>
+            <option value="ja">Japanese</option>
+            <option value="vi">Vietnamese</option>
+            <option value="ar">Arabic</option>
+        </select>
+    </div>
+
+    <p ng-model="gresults2">
+    <div style="background-color:lightblue;font-size: 18pt;width: 600px; height: 40px ;opacity: .9">Name: {{gresults2.name}}</div><br>
+    <div style="background-color:lightblue;font-size: 18pt;width: 600px; height: 40px;opacity: .9 ">Description: {{gresults2.description}}</div><br>
+    <div style="background-color:lightblue;font-size: 18pt;width: 600px; height: 40px ;opacity: .9">Translated Name: {{gresults2.translatedName}}</div><br>
+    <div style="background-color:lightblue;font-size: 18pt;width: 600px; height: 40px;opacity: .9 ">Translated Description: {{gresults2.translatedDescription}}</div><br>
+    <img src="{{gresults2.PixabayImage}}">
+    </p>
+</div>
+</div>
 </body>
 </html>
