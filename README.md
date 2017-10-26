@@ -16,3 +16,5 @@ lab6: https://github.com/waynenguyen303/CS5551_WayneNguyen_Labassignments/wiki/A
 lab7: https://github.com/waynenguyen303/CS5551_WayneNguyen_Labassignments/wiki/ASE-Lab7-Ionic-Cordova-Plugins-and-YSlow
 
 lab8: https://github.com/waynenguyen303/CS5551_WayneNguyen_Labassignments/wiki/ASE-Lab8-Node.js-REST-Service-Mashup
+
+lab9: https://github.com/waynenguyen303/CS5551_WayneNguyen_Labassignments/wiki/ASE-Lab9-CRUD-MongoDB
