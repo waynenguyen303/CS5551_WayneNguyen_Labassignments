@@ -32,7 +32,8 @@ import com.google.android.gms.plus.Plus;
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener{
 
     private SignInButton Signin;
-    private TextView name,email;
+    private TextView name;
+    private TextView email;
     private ImageView prof_pic;
     public static GoogleApiClient googleApiclient;
     private static final int REQ_CODE = 9001;
@@ -66,9 +67,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.O
 
             try{
                 Intent sendhomepage = new Intent(MainActivity.this,homepage.class);
-                String name , email, dpUrl=" ";
-                name = account.getDisplayName();
-                email= account.getEmail();
+                String name = account.getDisplayName();
+                String email = account.getEmail();
+                String dpUrl= " ";
+
+                //email= account.getEmail();
                 //dpUrl = account.getPhotoUrl().toString();
                 sendhomepage.putExtra("p_name",name);
                 sendhomepage.putExtra("p_email",email);
